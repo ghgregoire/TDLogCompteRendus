@@ -1,46 +1,21 @@
-# TDLogCompteRendus
-Projet de TDLOG de génrateur de Compte-Rendus de Réunion
+# Hackathon Ponts ENPC
 
-Contacts :
-• adle.ben-salem@eleves.enpc.fr
-• edgar.duc@eleves.enpc.fr
-• antony.feord@eleves.enpc.fr
+## Install
 
-1. Première Phase : Mise en Œuvre Initiale
+- when opening VSCode, install the suggested extensions (Python, Black Formatter and Pylance)
+- create your python environment `python3 -m venv .venv`
+- copy the `.env.example` file to a `.env` file
+- replace the `OPENAI_API_KEY` env variables with the real values
+- activate your environment with `source .venv/bin/activate`
+- install the requirements with `pip install -r requirements.txt`
+- download necessary data with `python -m nltk.downloader all`
+- run the server with `flask --app main run --debug`
 
-• Génération de la Transcription
-La première étape consiste à transcrire une courte vidéo de réunion (environ 2 à
-3 minutes).
-Outil suggéré : Whisper-v3*
-L’objectif est également d’identifier les différents interlocuteurs afin de faciliter
-l’analyse.
+The server should answer on http://localhost:5000
 
-• Prétraitement de la Transcription
-La transcription sera ensuite prétraitée en expérimentant diverses techniques de
-segmentation ("chunking"). On commencera par un découpage fixe, puis un
-découpage par interlocuteur ou par paragraphe.
-Outil suggéré : Langchain/LLamaIndex
+You can deactivate the environment with `deactivate`.
 
-• Création du Prompt pour la Génération du Compte Rendu
-Enfin, un prompt sera conçu pour générer un compte rendu synthétique à partir
-des segments de texte prétraités.
-Outil suggéré : GPT
+## Adding librairies
 
-2. Améliorations Possibles
-
-• Mise à l'Échelle pour des Réunions Plus Longues
-Étendre la solution pour gérer des réunions plus longues, pouvant aller jusqu’à
-une heure.
-• Amélioration par Recherche Vectorielle
-Utiliser des techniques de recherche vectorielle pour améliorer la pertinence et
-la qualité du compte rendu généré.
-• Développement d'une Interface Utilisateur (Frontend)
-Concevoir une interface utilisateur pour rendre l'outil plus accessible et
-convivial.
-• Statistiques
-Concevoir un affichage de statistiques sur les temps de paroles/prises de paroles des différents interlocuteurs
-
-Questions :
-
-Format attendu ?
-Licence pour les outils ?
+if you need to use a new librairies, you can do it with pip
+`pip install [library name]` or `pip3 install [library name]`

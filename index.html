@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Ma page</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}"
+    />
+  </head>
+
+  <body>
+    <main class="main-container">
+      <header class="header">
+        <h1 class="header-title">Mon A.I.de mémoire</h1>
+      </header>
+
+      <section id="messages-container" class="messages-container">
+        <div class="message message-ai">
+          Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
+          le cours et je te répondrai.
+        </div>
+      </section>
+
+      <form id="prompt-form" class="prompt-container">
+        <label for="prompt" class="prompt-label">Message</label>
+
+        <input
+          type="text"
+          id="prompt"
+          name="prompt"
+          class="prompt-input"
+          autocomplete="off"
+        />
+
+        <button type="submit" class="button" id="submit-button">Envoyer</button>
+
+        <button type="button" class="button" id="question-button">
+          Pose-moi une question !
+        </button>
+      </form>
+
+      <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+    </main>
+  </body>
+</html>
