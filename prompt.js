@@ -10,6 +10,19 @@ const appendHumanMessage = (message) => {
   messagesContainer.appendChild(humanMessageElement);
 };
 
+function downloadVideo(videoUrl, fileName) {
+    // Créez un lien <a> temporaire
+    const a = document.createElement('a');
+    a.href = videoUrl;
+    a.download = fileName || 'video.mp4'; // Spécifiez le nom du fichier
+    document.body.appendChild(a);
+    a.click(); // Simulez un clic sur le lien
+    document.body.removeChild(a); // Supprimez le lien après le téléchargement
+}
+
+// Exemple d'utilisation
+downloadVideo('https://www.example.com/video.mp4', 'ma_video.mp4');
+
 const appendAIMessage = async (messagePromise) => {
   // Add a loader to the interface
   const loaderElement = document.createElement("div");
