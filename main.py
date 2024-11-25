@@ -28,7 +28,7 @@ import whisper
 def transcribe_video(video_path, language="fr", model_name="medium"):
     # Extraire l'audio de la vidéo
     # Use f-string to correctly substitute the video_path variable
-    audio_path = "/content/sample-3.mp3" # Define the audio path variable
+    audio_path = "sample-3.mp3" # Define the audio path variable
     !ffmpeg -i {video_path} -vn {audio_path} # Use audio_path in the command
 
     # Charger le modèle Whisper
