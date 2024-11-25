@@ -43,4 +43,5 @@ def transcribe_video(video_path, language="fr", model_name="medium"):
     with open("transcription.txt", "w", encoding="utf-8") as f:
         f.write(result["text"])
 
+transcribe_video("/content/WIN_20241125_16_02_40_Pro.mp4")
 
