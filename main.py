@@ -19,7 +19,8 @@ def prompt():
 
 
 ###########fonction transcription
-import os
+!pip install git+https://github.com/openai/whisper.git
+!pip install ffmpeg-pythonimport os
 import subprocess
 import whisper
 
