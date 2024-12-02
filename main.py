@@ -19,19 +19,22 @@ def prompt():
 
 
 ###########fonction transcription
-!pip install git+https://github.com/openai/whisper.git
-!pip install ffmpeg-python
+#!pip install git+https://github.com/openai/whisper.git
+#!pip install ffmpeg-python
 import os
 import subprocess
 import whisper
+import ffmpeg
 
-!apt-get update && apt-get install ffmpeg -y
+#!apt-get update && apt-get install ffmpeg -y
 
 def transcribe_video(video_path, language="fr", model_name="medium"):
     # Extraire l'audio de la vidéo
     # Use f-string to correctly substitute the video_path variable
     audio_path = "sample-3.mp3" # Define the audio path variable
-    !ffmpeg -i {video_path} -vn {audio_path} # Use audio_path in the command
+    ffmpeg.input(video_path)
+    ffmpeg.output(audio_path)
+    ffmpeg.run()
 
     # Charger le modèle Whisper
     model = whisper.load_model(model_name)
