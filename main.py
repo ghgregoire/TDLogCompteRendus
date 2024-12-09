@@ -54,7 +54,7 @@ def compterendu(filename, api_key):
     Cette fonction prend un nom de fichier en entrée (ex: transcription.txt)
     et utilise l'API OpenAI pour créer un résumé de la réunion décrite dans le fichier.
     """
-    openai.api_key = api_key 
+    openai.api_key = api_key #a remplacer par OPENAI_API_KEY, une fois le fichier .env créé
 
     try:
         with open(filename, 'r', encoding='utf-8') as f:
