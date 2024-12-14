@@ -3,6 +3,7 @@ from flask import render_template
 from flask import request
 from openai import OpenAI
 
+
 app = Flask(__name__)
 
 @app.route("/")
@@ -28,8 +29,8 @@ import ffmpeg
 
 #!apt-get update && apt-get install ffmpeg -y
 
-def transcribe_video(video_path, language="fr", model_name="medium"):
-    # Extraire l'audio de la vidéo
+def transcribe_video(video_path, language="fr", model_name="medium"): #
+    """Extraire l'audio de la vidéo puis retourne le transcript de cet audio"""
     # Use f-string to correctly substitute the video_path variable
     audio_path = "sample-3.mp3" # Define the audio path variable
     ffmpeg.input(video_path)
@@ -80,7 +81,7 @@ def compterendu(filename, api_key):
 
 
 # Example usage 
-api_key = "YOUR_API_KEY" # Remplacez par votre clé API OpenAI
+api_key = os.environ.get("OPENAI_API_KEY") #Hardcoding your API Key is not good practice and dangerous,
 summary = compterendu("transcription.txt", api_key)
 print(summary)
 
