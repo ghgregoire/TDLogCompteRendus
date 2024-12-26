@@ -3,7 +3,7 @@
 ## Install
 
 - when opening VSCode, install the suggested extensions (Python, Black Formatter and Pylance)
-(dans le terminal bash: py -m venv .venv) - create your python environment `python3 -m venv .venv`
+(dans le terminal bash: py -3 -m venv .venv) - create your python environment `python3 -m venv .venv`
 - copy the `.env.example` file to a `.env` file
 - replace the `OPENAI_API_KEY` env variables with the real values
 (dans git bash: source .venv/Scripts/activate)- activate your environment with `source .venv/bin/activate`
