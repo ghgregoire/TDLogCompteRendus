@@ -1,7 +1,8 @@
 from flask import Flask
 from flask import render_template
 from flask import request
-#from openai import OpenAI
+
+# from openai import OpenAI
 
 app = Flask(__name__)
 """
@@ -19,21 +20,22 @@ def prompt():
 
 """
 ###########fonction transcription
-#!pip install git+https://github.com/openai/whisper.git
-#!pip install ffmpeg-python
+# !pip install git+https://github.com/openai/whisper.git
+# !pip install ffmpeg-python
 import os
 from dotenv import load_dotenv
 import subprocess
 import whisper
 import ffmpeg
+print(ffmpegy)
 
-
-#!apt-get update && apt-get install ffmpeg -y
+# !apt-get update && apt-get install ffmpeg -y
 
 def transcribe_video(video_path, language="fr", model_name="medium"):
     # Extraire l'audio de la vidéo
     # Use f-string to correctly substitute the video_path variable
-    audio_path = "sample-3.mp3" # Define the audio path variable
+
+    audio_path = "sample-3.mp3"  # Define the audio path variable
 
     command = [
         'ffmpeg',
@@ -42,10 +44,8 @@ def transcribe_video(video_path, language="fr", model_name="medium"):
         '-map', 'a',  # Extraire uniquement la piste audio
         audio_path  # Fichier audio de sortie
     ]
-
     # Exécuter la commande
     subprocess.run(command, check=True)
-
     # Charger le modèle Whisper
     model = whisper.load_model(model_name)
 
@@ -55,13 +55,13 @@ def transcribe_video(video_path, language="fr", model_name="medium"):
     print("Transcription terminée!")
 
     # Sauvegarder la transcription dans un fichier texte
-    #with open("transcription.txt", "w", encoding="utf-8") as f:
+    # with open("transcription.txt", "w", encoding="utf-8") as f:
     #    f.write(result["text"])
-
 
     return result["text"]
 
-#copier collé de gemini, pour nous inspirer
+
+# copier collé de gemini, pour nous inspirer
 """
 def compterendu(filename, api_key):
     
@@ -96,14 +96,14 @@ summary = compterendu("transcription.txt", api_key)
 print(summary)
 """
 
-
 print("1")
-#transcribe_video("WIN_20241125_16_02_40_Pro.mp4")
+# transcribe_video("WIN_20241125_16_02_40_Pro.mp4")
 
 import openai
 
-#Clé de Adle
+# Clé de Adle
 openai.api_key_path = ".venv/APIKEY.txt"
+
 
 def generer_compte_rendu(dialogue, length=1):
     """
@@ -111,15 +111,17 @@ def generer_compte_rendu(dialogue, length=1):
     """
     try:
         messages = [
-            {"role": "system", "content": "Vous êtes un assistant chargé de rédiger des comptes rendus professionnels à partir des dialogues de réunions."},
-            {"role": "user", "content": f"Voici le texte d'un dialogue de réunion :\n\n{dialogue}\n\nVeuillez rédiger un compte rendu professionnel et structuré de cette réunion."}
+            {"role": "system",
+             "content": "Vous êtes un assistant chargé de rédiger des comptes rendus professionnels à partir des dialogues de réunions."},
+            {"role": "user",
+             "content": f"Voici le texte d'un dialogue de réunion :\n\n{dialogue}\n\nVeuillez rédiger un compte rendu professionnel et structuré de cette réunion."}
         ]
 
         # Appel à l'API OpenAI
         response = openai.ChatCompletion.create(
             model="gpt-3.5-turbo",  # ou "gpt-4" mais je crois pas qu'on l'ait
             messages=messages,
-            max_tokens=length*len(dialogue),  # Nombres maximum de mots de la réponse, à ajuster.
+            max_tokens=length * len(dialogue),  # Nombres maximum de mots de la réponse, à ajuster.
             temperature=0.5
         )
 
@@ -132,10 +134,9 @@ def generer_compte_rendu(dialogue, length=1):
         return None
 
 
-
-#compte_rendu = generer_compte_rendu(transcribe_video("WIN_20241125_16_02_40_Pro.mp4"))
-dialogue = " Je m'appelle Armand, je suis à l'école de Pont-et-Choussey, avec Grégoire, qui reste de moi. Je veux parler de l'extérieur qui va détruire l'interstructure."
-compte_rendu = generer_compte_rendu(dialogue)
+compte_rendu = generer_compte_rendu(transcribe_video("WIN_20241125_16_02_40_Pro.mp4"))
+# dialogue = " Je m'appelle Armand, je suis à l'école de Pont-et-Choussey, avec Grégoire, qui reste de moi. Je veux parler de l'extérieur qui va détruire l'interstructure."
+# compte_rendu = generer_compte_rendu(dialogue)
 if compte_rendu:
-      print("\nCompte Rendu de la Réunion :\n")
-      print(compte_rendu)
+    print("\nCompte Rendu de la Réunion :\n")
+    print(compte_rendu)
