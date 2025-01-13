@@ -1,0 +1,26 @@
+<html><p>Compte-rendu de réunion</p>
+<p>Ce document tient lieu de compte-rendu de la réunion qui s’est tenue le (indiquer le jour) à (indiquer l’heure).</p>
+<p>Étaient présents : <strong>Armand</strong> et <strong>Grégoire</strong>.</p>
+<p>Étaient également intervenues : (le cas échéant)</p>
+<p>I. Objectifs de la réunion</p>
+<p>La réunion objet de ce présent compte-rendu avait pour principaux objectifs de :</p>
+<ul>
+<li>(Lister les objectifs/ordres du jour de la réunion).</li>
+</ul>
+<p>II.Sujets abordés</p>
+<p>Au cours de la réunion ont été abordés les sujets suivants :</p>
+<ul>
+<li>(L’objet de la discussion : "parler d'un problème imminent qui menace les infrastructures”).</li>
+<li>(Détailler la discussion : "Armand a évoqué la menace imminente qui pèse sur les infrastructures").</li>
+</ul>
+<p>III.Décisions prises</p>
+<p>Après discussions entre les différentes personnes conviées, il a été décidé ce qui suit :</p>
+<ul>
+<li>(Lister les décisions prises au cours de la réunion : Aucune décision n'a été prise à ce stade).</li>
+</ul>
+<p>IV.Actions à mener</p>
+<p>Pour répondre aux conclusions des sujets abordés et pour la mise en place des décisions évoquées ci-dessus, de nouvelles actions seront menées, à savoir :</p>
+<ul>
+<li>(Lister les actions à mener avec le nom de la personne concernée pour le pilotage de ces actions : "Armand sera chargé de recueillir des informations supplémentaires et de proposer des solutions pour faire face à la menace qui pèse sur les infrastructures").</li>
+</ul>
+<p>V.

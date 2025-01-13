@@ -1,0 +1,74 @@
+/* Conteneur principal du chat */
+#chat-container {
+    width: 80%;
+    max-width: 800px;
+    height: 500px;
+    margin: 20px auto;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    overflow-y: auto;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+}
+
+/* Messages de chat */
+.chat-message {
+    display: flex;
+    align-items: flex-start;
+    margin: 10px 0;
+}
+
+/* Avatar */
+.chat-avatar {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin-right: 10px;
+    border: 2px solid #007BFF;
+    object-fit: cover;
+}
+
+/* Texte du message */
+.chat-text {
+    background-color: #007BFF;
+    color: white;
+    padding: 10px 15px;
+    border-radius: 15px;
+    max-width: 70%;
+    font-size: 14px;
+    line-height: 1.4;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    position: relative;
+}
+
+/* Nom du bot en gras */
+.chat-text strong {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #ffdd57;
+}
+
+/* Styles alternés pour bots */
+.chat-message:nth-child(odd) .chat-text {
+    background-color: #6c757d;
+}
+
+/* Animation d'apparition des messages */
+.chat-message {
+    opacity: 0;
+    animation: fadeIn 0.5s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
