@@ -5,14 +5,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ma page</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style_conversation.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static/css', filename='style_conversation.css') }}" />
 </head>
 
 <body>
   <main class="main-container">
     <header class="header">
       <h1 class="header-title">Hackathon Ponts 2024</h1>
-      <button type="button" class="button" id="darkModeToggle">Dark Mode</button>
     </header>
 
     <section id="messages-container" class="messages-container">
@@ -32,19 +31,11 @@
       <button type="button" class="button" id="perronnet-button">
         Parler avec Perronnet
         <img src="https://collections.louvre.fr/media/cache/original/0000000021/0000062722/0000053979_OG.JPG" width="30" height="30"/>        
-      </button>
-      <button type="button" class="button" id="dormieux-button">
-        Parler avec Luc Dormieux
-        <img src="http://emagazine.uniroma2.it/files/2016/08/Dormieux.png" width="30" height="30"/>
-       </button>
-
-      
-      
-      
+      </button>            
       
     </form>
 
-    <script src="{{ url_for('static', filename='prompt_conversation.js') }}"></script>
+    <script src="{{ url_for('static/js', filename='prompt_conversation.js') }}"></script>
   </main>
 </body>
 
