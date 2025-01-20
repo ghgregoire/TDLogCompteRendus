@@ -140,3 +140,4 @@ compte_rendu = generer_compte_rendu(transcribe_video("WIN_20241125_16_02_40_Pro.
 if compte_rendu:
     print("\nCompte Rendu de la Réunion :\n")
     print(compte_rendu)
+    
