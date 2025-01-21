@@ -1,4 +1,5 @@
-// Exemple de script JavaScript pour animer une réunion sur un site web
+//Exemple de script JavaScript pour animer une réunion sur un site web. Important: Toujours commencer par const meetingScenario = [, et ne pas changer les avatars (il faut garder "/static/images/bot1_avatar.png" etc). Le javascript doit être complet, avec un crochet fermant et un point virgule final ]; (pour que je puisse enchainer avec  js_file.write('''
+function displayScenario(scenario) {... )
 
 const meetingScenario = [
     {
