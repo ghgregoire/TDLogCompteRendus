@@ -2,8 +2,6 @@ const promptForm = document.getElementById("prompt-form");
 const submitButton = document.getElementById("submit-button");
 const questionButton = document.getElementById("question-button");
 const messagesContainer = document.getElementById("messages-container");
-const jrperronnet = document.getElementById("perronnet-button");
-const lucdormieux = document.getElementById("dormieux-button")
 
 const appendHumanMessage = (message) => {
   const humanMessageElement = document.createElement("div");
@@ -42,24 +40,7 @@ const handlePrompt = async (event) => {
     questionButton.classList.remove("hidden");
     submitButton.innerHTML = "Message";
   }
-  if (jrperronnet.dataset.question !== undefined) {
-    url = "/perro2";
-    data.append("question", jrperronnet.dataset.question);
-    delete jrperronnet.dataset.question;
-    jrperronnet.classList.remove("hidden");
-    submitButton.innerHTML = "Message";
-  }
-  if (lucdormieux.dataset.question !== undefined) {
-    url = "/dormieux2";
-    data.append("question", lucdormieux.dataset.question);
-    delete lucdormieux.dataset.question;
-    lucdormieux.classList.remove("hidden");
-    submitButton.innerHTML = "Message";
-  }
-  
-
-  
-
+     
   appendHumanMessage(data.get("prompt"));
 
   await appendAIMessage(async () => {
@@ -89,36 +70,4 @@ const handleQuestionClick = async (event) => {
   });
 };
 
-const handleQuestionClick2 = async (event) => {
-  appendAIMessage(async () => {
-    const response = await fetch("/perro", {
-      method: "GET",
-    });
-    const result = await response.json();
-    const question = result.answer;
-
-    jrperronnet.dataset.question = question;
-    jrperronnet.classList.add("hidden");
-    submitButton.innerHTML = "Réponse de JR Perronnet";
-    return question;
-  });
-};
-
-const handleQuestionClick3 = async (event) => {
-  appendAIMessage(async () => {
-    const response = await fetch("/dormieux", {
-      method: "GET",
-    });
-    const result = await response.json();
-    const question = result.answer;
-
-    lucdormieux.dataset.question = question;
-    lucdormieux.classList.add("hidden");
-    submitButton.innerHTML = "Réponse de Luc Dormieux";
-    return question;
-  });
-};
-
 questionButton.addEventListener("click", handleQuestionClick);
-jrperronnet.addEventListener("click", handleQuestionClick2);
-lucdormieux.addEventListener("click", handleQuestionClick3);
