@@ -33,7 +33,7 @@ def allowed_file(filename):
 # Route de la page d'accueil
 @app.route("/")
 def home():
-    return render_template("index.html")
+    return render_template("index_total.html")
 
 # Préparation des données avant chaque requête
 @app.before_request
