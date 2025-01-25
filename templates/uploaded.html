@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <title>Générateur de CR</title>
+
+    <link
+      rel="stylesheet"
+      href="{{ url_for('static', filename='css/style.css') }}"
+    />
+  </head>
+
+  <body>
+    <main class="main-container">
+
+
+      <header class="header">
+        <h1 class="header-title">Upload :</h1>
+      </header>
+      <button onclick="location.href='/perro2'">Feedback Bots</button>
+      <button onclick="location.href='/perro'">Feedback GPT</button>
+      <button onclick="location.href='/prompt'">Feedback Texte</button>
+
+      <script src="{{ url_for('static', filename='js/prompt.js') }}"></script>
+    </main>
+  </body>
+</html>

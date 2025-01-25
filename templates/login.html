@@ -16,17 +16,12 @@
       <header class="header">
         <h1 class="header-title">Upload :</h1>
       </header>
-      <form action="/uploaded" method="post" enctype="multipart/form-data">
+      <form action="/upload" method="post" enctype="multipart/form-data">
         <label for="file">Sélectionnez une vidéo :</label>
         <input type="file" name="file" id="file" accept="video/*" required>
         <button type="submit">Uploader</button>
       </form>
-      <div class="espace-vertical"></div>
-      <form action="/uploaded" method="post" enctype="multipart/form-data">
-        <label for="file">Sélectionnez un texte :</label>
-        <input type="file" name="file" id="textfile" accept=".txt" required>
-        <button type="submit">Uploader</button>
-      </form>
+
 
       <script src="{{ url_for('static', filename='js/prompt.js') }}"></script>
     </main>

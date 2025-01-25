@@ -102,10 +102,8 @@ def split_text(text, chunk_size=5000):
     if current_chunk:
         chunks.append(current_chunk.getvalue())
     return chunks
-def transcribe_video(video_path, language="fr", model_name="medium"):
-    # Extraire l'audio de la vidéo
-    # Use f-string to correctly substitute the video_path variable
 
+def transcribe_video(video_path, language="fr", model_name="medium"):
 
 
 
@@ -134,7 +132,9 @@ def transcribe_video(video_path, language="fr", model_name="medium"):
     with open("transcription.txt", "w", encoding="utf-8") as f:
        f.write(result["text"])
 
-    #return result["text"]
+    # SAUVEGARDER DANS LA BASE DE DONNEE LA TRANSCRIPTION
+    # SAUVEGARDER DANS LA BASE DE DONNEE LA TRANSCRIPTION
+    # SAUVEGARDER DANS LA BASE DE DONNEE LA TRANSCRIPTION
 
 
 
@@ -196,6 +196,11 @@ def compterendu():
     with open(text_file_path, 'w') as text_file:
         text_file.write(summary)
     print(f"resume sauvegardée dans {text_file_path}")
+
+    # SAUVEGARDER DANS LA BASE DE DONNEE LE RESUME CORRESPONDANT
+    # SAUVEGARDER DANS LA BASE DE DONNEE LE RESUME CORRESPONDANT
+    # SAUVEGARDER DANS LA BASE DE DONNEE LE RESUME CORRESPONDANT
+
     return summary
 
 
@@ -231,6 +236,23 @@ def process(gdata):
         "file_resume": compterendu()
     }
 
+def textprocess(gdata):
+    file_path = gdata.get('file_path')
+
+    if not file_path or not os.path.exists(file_path):
+        return {"error": "File not found"}
+
+    # Exemple : Obtenir la taille du fichier
+    file_size = os.path.getsize(file_path)
+    print("file")
+
+    return {
+        "status": "completed",
+        "file_size": file_size,
+        "file_name": os.path.basename(file_path),
+        "file_resume": compterendu()
+    }
+
 #compte_rendu = generer_compte_rendu(transcribe_video("WIN_20241125_16_02_40_Pro.mp4"))
 #compte_rendu = process()
 #compte_rendu = compterendu("WIN_20241125_16_02_40_Pro_transcription.txt")
@@ -239,3 +261,25 @@ def process(gdata):
 #if compte_rendu:
 #    print("\nCompte Rendu de la Réunion :\n")
 #    print(compte_rendu)
+
+
+filename = os.path.join(os.path.dirname(__file__), "transcription.txt")
+document = read_txt(filename)
+chunks = split_text(document)
+
+message_history.append({"role": "user", "content": chunks[0]})
+
+
+def gpt3_completion(prompt_user, model="gpt-3.5-turbo", max_tokens=450):
+    global message_history
+
+    message_history.append({"role": "user", "content": prompt_user})
+    response = openai.ChatCompletion.create(
+        model="gpt-3.5-turbo", messages=message_history, max_tokens=450
+    )
+    model_response = response.choices[0].message["content"].strip()
+
+    message_history.append({"role": "assistant", "content": model_response})
+
+    return model_response
+
