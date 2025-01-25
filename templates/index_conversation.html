@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ma page</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_conversation.css') }}" />
+</head>
+
+<body>
+  <main class="main-container">
+    <header class="header">
+      <h1 class="header-title">Assistant gpt</h1>
+    </header>
+
+    <section id="messages-container" class="messages-container">
+      <div class="message message-ai">
+        <button type="button" class="button" id="question-button">Démarer une conversation avec chatgpt
+          <img src="https://digital-learning-academy.com/wp-content/uploads/2017/10/chat-bot-for-social-networking.jpg" width="30" height="30"/> 
+        </button>
+      </div>
+    </section>
+
+    <form id="prompt-form" class="prompt-container">
+      <label for="prompt" class="prompt-label">Message Chatgpt</label>
+      <input type="text" id="prompt" name="prompt" class="prompt-input" autocomplete="" />
+      <button type="submit" class="button" id="submit-button">Envoyer</button> 
+
+    </form>
+
+    <script src="{{ url_for('static', filename='js/prompt_conversation.js') }}"></script>
+  </main>
+</body>
+
+</html>

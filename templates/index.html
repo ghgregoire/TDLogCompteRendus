@@ -1,46 +1,71 @@
 <!DOCTYPE html>
 <html lang="fr">
   <head>
-    <title>Ma page</title>
+    <!-- Métadonnées et lien vers la feuille de style CSS -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de CR</title>
 
+<<<<<<< HEAD
+    <!-- Lien vers le fichier CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+=======
     <link
         rel="stylesheet"
         href="{{ url_for('static', filename='style.css') }}"
     />
+>>>>>>> f90ba5eb7ab0a637567edf3c2398d1ea4941d0dc
   </head>
 
   <body>
     <main class="main-container">
+      <!-- En-tête de la page -->
       <header class="header">
-        <h1 class="header-title">Mon A.I.de mémoire</h1>
+        <h1 class="header-title">Générateur de Compte Rendu</h1>
       </header>
 
-      <section id="messages-container" class="messages-container">
-        <div class="message message-ai">
-          Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
-          le cours et je te répondrai.
-        </div>
+      <!-- Formulaire d'upload pour la vidéo et génération du CR -->
+      <section class="upload-section">
+        <h2>1. Upload de Vidéo pour Générer un CR</h2>
+        <form action="/upload" method="post" enctype="multipart/form-data">
+          <label for="file">Sélectionnez une vidéo :</label>
+          <input type="file" name="file" id="file" accept="video/*" required>
+          <button type="submit">Uploader</button>
+        </form>
       </section>
 
-      <form id="prompt-form" class="prompt-container">
-        <label for="prompt" class="prompt-label">Message</label>
+      <!-- Formulaire pour conversation GPT-3 -->
+      <section class="conversation-section">
+        <h2>2. Conversation avec l'Assistant GPT</h2>
+        <form action="/conversation" method="post" enctype="multipart/form-data">
+          <label for="file">Sélectionnez une vidéo :</label>
+          <input type="file" name="file" id="file" accept="video/*" required>
+          <button type="submit">Assistant GPT</button>
+        </form>
+      </section>
 
-        <input
-          type="text"
-          id="prompt"
-          name="prompt"
-          class="prompt-input"
-          autocomplete="off"
-        />
+      <!-- Formulaire pour générer un compte rendu animé -->
+      <section class="animation-section">
+        <h2>3. Générer un Compte Rendu Animé</h2>
+        <form action="/animation" method="post" enctype="multipart/form-data">
+          <label for="file">Sélectionnez une vidéo :</label>
+          <input type="file" name="file" id="file" accept="video/*" required>
+          <button type="submit">Uploader Anime</button>
+        </form>
+      </section>
 
-        <button type="submit" class="button" id="submit-button">Envoyer</button>
+      <!-- Formulaire pour générer un compte rendu en base de données -->
+      <section class="database-section">
+        <h2>4. Générer un Compte Rendu (Base de Données)</h2>
+        <form action="/basededonnee" method="post" enctype="multipart/form-data">
+          <label for="file">Sélectionnez une vidéo :</label>
+          <input type="file" name="file" id="file" accept="video/*" required>
+          <button type="submit">Uploader Base de Données</button>
+        </form>
+      </section>
 
-        <button type="button" class="button" id="question-button">
-          Pose-moi une question !
-        </button>
-      </form>
-
-      <script src="{{ url_for('static', filename='prompt.js') }}"></script>
+      <!-- Lien vers le fichier JavaScript -->
+      <script src="{{ url_for('static', filename='js/prompt.js') }}"></script>
     </main>
   </body>
 </html>

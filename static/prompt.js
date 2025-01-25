@@ -69,5 +69,20 @@ const handleQuestionClick = async (event) => {
     return question;
   });
 };
+const handleQuestionClick2 = async (event) => {
+  appendAIMessage(async () => {
+    const response = await fetch("/starter", {
+      method: "GET",
+    });
+    const result = await response.json();
+    const question = result.answer;
+
+    jrperronnet.dataset.question = question;
+    jrperronnet.classList.add("hidden");
+    submitButton.innerHTML = "Réponse de JR Perronnet";
+    return question;
+  });
+};
 
 questionButton.addEventListener("click", handleQuestionClick);
+
