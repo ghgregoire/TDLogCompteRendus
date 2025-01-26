@@ -3,12 +3,17 @@ import os
 from datetime import datetime
 import openai
 import main
+from flask_sqlalchemy import SQLAlchemy
 
-
+from basedonnee.alchemy import Session, User, Report
 import re
 
 # Création de l'application Flask
 app = Flask(__name__)
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///your_database.db'  # Remplace par ton URI de base de données
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+db = SQLAlchemy(app)
+
 
 #############
 message_history = []
@@ -38,9 +43,44 @@ def index():
     return render_template('index.html')
 """
 
-@app.route("/")
+
+
+# Route pour afficher le formulaire HTML
+@app.route('/', methods=['GET', 'POST'])
 def home():
-    return render_template("index.html")
+    return render_template('index.html')
+
+@app.route('/signinpage', methods=['GET', 'POST'])
+def home_sign_in():
+    return render_template('signin.html')
+
+# Route pour gérer les données du formulaire
+@app.route('/login', methods=['POST'])
+def login():
+    # Récupération des données du formulaire
+    login = request.form.get('login')  # Récupère le champ "login"
+    password = request.form.get('password')  # Récupère le champ "password"
+
+    Condition = True
+
+    if Condition :
+        return render_template('upload.html')
+    else :
+        return render_template('loginfail.html')
+
+
+@app.route('/signin', methods=['POST'])
+def signin():
+    # Récupération des données du formulaire
+    login = request.form.get('login')  # Récupère le champ "login"
+    password = request.form.get('password')  # Récupère le champ "password"
+
+    Condition = True
+
+    if Condition :
+        return render_template('upload.html')
+    else :
+        return render_template('signinfail.html')
 
 @app.route("/upload")
 def upload_page():
@@ -268,7 +308,37 @@ def basededonnee():
         # Traitement de la vidéo uploadée pour la base de données
         # Ajoutez ici le code pour traiter l'upload
         result=compterendu_basededonnee()
-        return render_template("upload.html", dynamic_message=format_text_for_html(Markup(result)))
+        return render_template("feedback_txt.html", dynamic_message=format_text_for_html(Markup(result)))
 
 if __name__ == '__main__':
     app.run(debug=True)
+
+
+
+
+
+# Fonctions de modifications des tables
+def ajouter_utilisateur(login, password):
+    session = Session()
+
+    new_user = User(login=login, password=password)
+    session.add(new_user)
+
+    session.commit()
+    session.close()
+
+
+def ajouter_compte_rendu(cr, user_id):
+    session = Session()
+
+    user = session.query(User).filter_by(id=user_id)
+    new_report = Report(summary=cr, user_id=user.id)
+    session.add(new_report)
+
+    session.commit()
+    session.close()
+
+
+@app.route('/success')
+def success():
+    return "Utilisateur ajouté avec succès !"
