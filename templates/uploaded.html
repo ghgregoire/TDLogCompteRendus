@@ -11,15 +11,39 @@
 
   <body>
     <main class="main-container">
-
-
+      <!-- En-tête de la page -->
       <header class="header">
-        <h1 class="header-title">Upload :</h1>
+        <h1 class="header-title">Générateur de Compte Rendu</h1>
       </header>
-      <button onclick="location.href='/perro2'">Feedback Bots</button>
-      <button onclick="location.href='/perro'">Feedback GPT</button>
-      <button onclick="location.href='/prompt'">Feedback Texte</button>
 
+      <!-- Formulaire pour conversation GPT-3 -->
+      <section class="conversation-section">
+        <h2>2. Conversation avec l'Assistant GPT</h2>
+        <button onclick="location.href='/conversation';">Passer</button>
+
+        <form action="/conversation" method="post" enctype="multipart/form-data">
+          <button type="submit">Assistant GPT</button>
+        </form>
+      </section>
+
+      <!-- Formulaire pour générer un compte rendu animé -->
+      <section class="animation-section">
+        <h2>3. Générer un Compte Rendu Animé</h2>
+        <form action="/animation" method="post" enctype="multipart/form-data">
+
+          <button type="submit">Animation</button>
+        </form>
+      </section>
+
+      <!-- Formulaire pour générer un compte rendu en base de données -->
+      <section class="database-section">
+        <h2>4. Générer un Compte Rendu (Base de Données)</h2>
+        <form action="/basededonnee" method="post" enctype="multipart/form-data">
+          <button type="submit">Base de Données</button>
+        </form>
+      </section>
+
+      <!-- Lien vers le fichier JavaScript -->
       <script src="{{ url_for('static', filename='js/prompt.js') }}"></script>
     </main>
   </body>

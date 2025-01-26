@@ -1,12 +1,153 @@
-Salaire
-Propriété privée - privat besetz
-Pneu - reifen
-Gaufres - waffeln
-Comte - Graf
-Geberge - 
-Responsable - verantwortlich sein
-L'impot - Die steuer
-Conduire - Steuern
-Permis de consuire - Fuhrerschein
-Document officiel schein
+\documentclass[11pt]{article}
 
+\usepackage[english]{babel} % Langue du document
+\usepackage[utf8]{inputenc} % Encodage du document
+\usepackage[T1]{fontenc} % Encodage des caractères
+\usepackage[margin=1.75cm,headheight=1cm,headsep=2.5mm]{geometry} % Marges du document
+\usepackage{svg} % Inclusion de fichiers SVG (logo des Ponts)
+\usepackage{hyperref} % Hyperliens
+\usepackage{xcolor} % Couleurs
+\usepackage{titlesec} % Définition des titres
+\usepackage[sorting=none]{biblatex} % Bibliographie
+\usepackage{csquotes} % Citation de textes
+\usepackage{fancyhdr}
+
+% Paramètes du rapport (A MODIFIER)
+    \def\auteura{\textsc{Ghérardi} Grégoire}
+    \def\emaila{gregoire.gherardi@eleves.enpc.fr} % Adresse mail a
+
+    \def\auteurb{\textsc{Lucas} Alexis}
+    \def\emailb{alexis.lucas@eleves.enpc.fr} % Adresse mail b
+
+    \def\encadrant{Éric Cances} % Nom de l'encadrant
+    \def\emailEncadrant{eric.cances@enpc.fr}
+    
+    \def\titre{Project Report} % Titre du rapport ou matière
+    \def\sousTitrea{Quantum Computation and \textsc{Rsa} Encryption} % Sous-titre du rapport
+    \def\sousTitreb{\textsc{Shor} Algorithm} % Sous-titre du rapport
+
+    \def\dateRapport{May 2024} % Date du rapport
+
+    % Définition de la bibliographie
+    \addbibresource{assets/biblio.bib}
+% Fin des paramètres du rapport
+
+% Définition du bleu du logo des Ponts
+\definecolor{bleuPonts}{HTML}{00aec7}
+
+% Hyperref : définition des couleurs des liens et des citations
+\hypersetup{
+    citecolor=bleuPonts, % Couleur des citations
+    colorlinks=true, % Activer les liens colorés
+    linkcolor=black, % Couleur des liens
+    urlcolor=bleuPonts, % Couleur des liens vers des URL
+    pdfpagemode=FullScreen, % Mode plein écran par défaut
+}
+
+% Définition des titres
+\titleformat{\part}[block]
+{\normalfont}
+{\Large\enspace \textsc{\partautorefname} \thepart\enspace}{.5em}{\titlerule\\\Huge\bfseries\textsc}
+
+\titleformat{\section}[frame]
+{\normalfont}
+{\filright
+\footnotesize
+\enspace \textsc{Section} \thesection\enspace}
+{8pt}
+{\Large\filcenter\bfseries\textsc}
+
+\titleformat{\subsection}[block]
+{\normalfont}
+{\thesubsection}{.5em}{\titlerule\\\Large}
+
+\titleformat{\subsubsection}[block]
+{\normalfont\itshape}
+{\thesubsubsection.}{.5em}{\titlerule\\}
+
+% Définition de la page de garde
+\date{\dateRapport}
+\author{{\auteurb} \\ \href{mailto:\emailb}{\emailb}
+        \\[.3cm] 
+        {\auteura} \\ \href{mailto:\emaila}{\emaila}
+        \\[.3cm] Supervised by : \encadrant \\
+        \href{mailto:\emailEncadrant}{\emailEncadrant}
+        \\[.3cm]
+        \textsc{As part of the Parcours Recherche}
+}
+\title{
+    \vspace*{2cm}
+    \href{https://ecoledesponts.fr/}{\includesvg[width=.2\linewidth]{assets/enpc.svg}} \\
+    \rule{\linewidth}{0.4pt} \\[0.3cm]
+    \textbf{\textsc{\titre}} \\
+    \sousTitrea \\[0.1cm]
+    \sousTitreb \\[0.1cm]
+    \rule{\linewidth}{0.4pt}
+}
+
+% Définition du style de page
+\setcounter{page}{1}
+\pagestyle{fancy}
+\fancyhead{}
+\lhead{{ENPC} \\ {\auteura}}
+\chead{\textsc{\textbf{\titre} \sousTitre}}
+\rhead{\dateRapport \\ \auteurb}
+\fancyfoot{}
+\rfoot{\textbf{\thepage \ / \pageref*{LastPage}}}
+
+\begin{document}
+    % Page de garde
+    \clearpage
+    \maketitle
+    \thispagestyle{empty}
+
+    % Résumé (A MODIFIER)
+    \begin{abstract}
+        The current encryption of most bank data uses the \textsc{Rsa} cipher, invented in 1977 by Ronald \textsc{Rivest}, Adi \textsc{Shamir} and Leonard \textsc{Adleman}. The difficulty of deciphering lies in the difficulty of factoring integers, especially when the integers chosen are very large. Factorisation algorithms have already been designed and implemented on conventional computers, but in practice they take too long to calculate in a human lifetime.
+        
+        In 1994, the mathematician Peter \textsc{Shor} proposed an algorithm for factoring integers using the recent technology of quantum bits, also known as q-bits. This algorithm is not widely used at present because of its cost in q-bits, which, although modest, is too high for current resources. However, it is far more efficient than previous algorithms, and makes encryption much more fragile in the long term.
+        
+        This article explains how this algorithm works. It will present elementary notions of quantum computation, the quantum fourier transform and the quantum discrete logarithm. In the appendices, you will find the arithmetic details of the \textsc{Rsa} encryption as well as various mathematical results used.
+    \end{abstract}
+    \newpage
+
+    % Table des matières
+    \tableofcontents
+
+    % Début du rapport (A MODIFIER)
+    \newpage
+    \section*{Introduction}
+    \newpage
+    \part{Quantum Computing Preliminaries}
+    \section{Quantum Physics Preliminaries}
+    \section{Basic Quantum Algorithms}
+    
+    \newpage
+    \part{Quantum Fourier Transform}
+    \section{Discrete Fourier Transform}
+    \section{Definition of the QFT}
+    \section{Implementation of the QFT}
+    
+    \newpage
+    \part{Quantum Discrete Logarithm}
+    \section{Arithmetics Preliminaries}
+    \section{Implementation of the QDL}
+    \newpage
+    
+    \part{Final Shor Algorithm}
+    \section{Preliminary Lemmas}
+    \section{Final Implementation}
+    
+    \subsection{subsection}
+    \subsubsection{subsubsection}
+    
+    Bibliography : \cite{overleaf_bibliography_management_2023}
+    \date
+
+    % Bibliographie
+    \newpage
+    \printbibliography
+
+    \label{LastPage}
+        
+\end{document}

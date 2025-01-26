@@ -5,46 +5,31 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Ma page</title>
-  <link rel="stylesheet" href="{{ url_for('static', filename='style_conversation.css') }}" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style_conversation.css') }}" />
 </head>
 
 <body>
   <main class="main-container">
     <header class="header">
-      <h1 class="header-title">Hackathon Ponts 2024</h1>
-      <button type="button" class="button" id="darkModeToggle">Dark Mode</button>
+      <h1 class="header-title">Assistant gpt</h1>
     </header>
 
     <section id="messages-container" class="messages-container">
       <div class="message message-ai">
-        Je suis ton AIssistant de cours personnel ! Pose-moi une question sur
-        le cours et je te répondrai.
+        <button type="button" class="button" id="question-button">Démarer une conversation avec chatgpt
+          <img src="https://digital-learning-academy.com/wp-content/uploads/2017/10/chat-bot-for-social-networking.jpg" width="30" height="30"/>
+        </button>
       </div>
     </section>
 
     <form id="prompt-form" class="prompt-container">
-      <label for="prompt" class="prompt-label">Message</label>
-      <input type="text" id="prompt" name="prompt" class="prompt-input" autocomplete="off" />
+      <label for="prompt" class="prompt-label">Message Chatgpt</label>
+      <input type="text" id="prompt" name="prompt" class="prompt-input" autocomplete="" />
       <button type="submit" class="button" id="submit-button">Envoyer</button>
-      <button type="button" class="button" id="question-button">
-        Pose-moi une question !
-      </button>
-      <button type="button" class="button" id="perronnet-button">
-        Parler avec Perronnet
-        <img src="https://collections.louvre.fr/media/cache/original/0000000021/0000062722/0000053979_OG.JPG" width="30" height="30"/>        
-      </button>
-      <button type="button" class="button" id="dormieux-button">
-        Parler avec Luc Dormieux
-        <img src="http://emagazine.uniroma2.it/files/2016/08/Dormieux.png" width="30" height="30"/>
-       </button>
 
-      
-      
-      
-      
     </form>
 
-    <script src="{{ url_for('static', filename='prompt_conversation.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/prompt_conversation.js') }}"></script>
   </main>
 </body>
 

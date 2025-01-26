@@ -40,7 +40,7 @@ const handlePrompt = async (event) => {
     questionButton.classList.remove("hidden");
     submitButton.innerHTML = "Message";
   }
-
+     
   appendHumanMessage(data.get("prompt"));
 
   await appendAIMessage(async () => {

@@ -1,0 +1,19 @@
+Modèle de réponse attendu.  Pour chaque ligne, mettre NULL si il n'y a pas de réponse
+
+Titre: générer un titre approprié pour la réunion
+Date: 
+Personnes: liste des personnes présentes, sous forme de chaine de caractères
+Objectif: résumer l'objectif de la réunion (trois lignes)
+Compte rendu : generer un compte rendu de la reunion (environs 20 lignes)
+Points de vue exprimés: indiquer le nombre de points de vues exprimés
+Point de vue 1: résumer le point de vue 1
+Point de vue 2: résumer le point de vue 2
+...
+Actions à faire: indiquer le nombre d'actions à entreprendre, suite à la réunion
+Action 1: résumer l'action 1
+Date 1: indiquer la date pour l'action 1
+Personnes 1: liste des personnes impliquees par l'action 1, sous forme de chaine de caractere
+Action 2: résumer l'action 2
+Date 2: indiquer la date pour l'action 2
+Personnes 2: liste des personnes impliquees par l'action 2, sous forme de chaine de caractere
+...
